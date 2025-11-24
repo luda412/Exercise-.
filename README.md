@@ -72,7 +72,7 @@ macOS에서 한글이 깨지는 이슈를 해결하기 위해 `AppleGothic`를 �
 
 # 📁 기술 스택
 
-Python
-pandas
-matplotlib
-Excel 기반 데이터 분석
+- Python
+- pandas
+- matplotlib
+- Excel 기반 데이터 분석
