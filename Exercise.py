@@ -6,27 +6,35 @@ rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
 class Exercise:
+    # 파일 이름 정의
     file_name = 'notExercise.xlsx'
+
+    # 파일을 읽어와서 DataFrame으로 변환
     def read_file_to_df(self):
         temp = pd.read_excel(self.file_name)
         df = pd.DataFrame(temp)
         return df
 
+    # header 분리
     def sep_header(self, df):
-        temp_header = df.columns.tolist()
-        start = temp_header.index("운동을 할 충분한 시간이 없어서")
-        end = temp_header.index("운동을 싫어해서") + 1   # 끝 포함
-        return temp_header[start:end]
+        header = df.columns.tolist()
+        start = header.index("운동을 할 충분한 시간이 없어서")
+        end = header.index("운동을 싫어해서") + 1   # 끝 포함
+        return header[start:end]
 
+    # DataFrame 자르기 
     def slice_df(self, df, start, end):
         return df.iloc[start:end, 2:8]
 
+    # pie 그래프 그리기
     def paint_pie(self, data, header):
 
+        # Ex)  labels = ['남성', '여성']
         labels = data['분류'].tolist()
+
         num_charts = len(header)
 
-        #전체 그래프 영역 만들기 (행/열 자동 계산)
+        #전체 그래프 영역 만들기 (행/열 계산)
         rows = math.ceil(num_charts / 2)
         cols = 2
 
